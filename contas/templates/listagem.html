@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Listagem</title>
+</head>
+<body>
+    <h1>Listagem</h1><br>
+    <ol>
+        {% for transacao in transacoes %}
+            {% if transacao %}
+            <li>{{ transacao.descricao }}
+                <ul>
+                    <span><b>Data</b> {{ transacao.data }}</span><br>
+                    <span><b>Tipo:</b> {{ transacao.categoria }}</span><br>
+                    <span><b>Valor:</b> {{ transacao.valor }}</span><br>
+                    <span><b><a href="{% url 'url_update' transacao.id %}">Editar</a></b></span>
+                </ul>
+            </li><br>
+            {% endif %}
+        {% endfor %}
+    </ol>
+    <a href="{% url 'url_nova' %}">Novo</a>
+</body>
+</html>
